@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -7,7 +7,7 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <main>
+    <main className="App">
       <Navbar />
       <About />
       <Projects />

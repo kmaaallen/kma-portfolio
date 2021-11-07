@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+$theme-primary: #780116; //headlines
+$theme-secondary: #db7c26; //backgrounds
+$theme-tertiary: #f7b538; //backgrounds
+$theme-base: #fff;
+$theme-text: #000;
+$font-family: "Roboto", sans-serf;
+$font-weight-bold: 700;
+$font-weight-regular: 400;
+$font-size-sm: 15px;
+$font-size-md: 20px;
+$font-size-lg: 25px;
+$font-size-xlg: 30px;
+
+/* Main styles */
+
+.App {
+  background-color: $theme-base;
+  font-family: $font-family;
+}
+
+/* Styles for navbar - mobile first*/
+
+.App-header {
+  display: block;
+  background-color: $theme-base;
+  font-weight: $font-weight-bold;
+  color: $theme-primary;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+
+  h1 {
+    display: inline-flex;
+    margin: 0;
+    padding-left: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: $font-size-md;
+    color: $theme-primary;
+    line-height: 35px;
+    &:hover {
+      text-decoration: underline 2px;
+    }
+  }
+
+  & .App-header-links {
+    list-style: none;
+    padding-left: 10px;
+  }
+
+  button {
+    display: inline-flex;
+    margin: auto;
+    background: transparent;
+    border: none;
+    float: right;
+    color: $theme-primary;
+    font-size: $font-size-xlg;
+  }
+}
+
+@media (min-width: 700px) {
+  .App-header {
+    display: flex;
+    padding-left: 10px;
+    justify-content: space-between;
+    & .App-header-links {
+      margin: auto 0;
+      justify-content: space-around;
+      color: $theme-text;
+      width: 40%;
+    }
+    button {
+      display: none;
+    }
+  }
+}
