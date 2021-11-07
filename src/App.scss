@@ -3,7 +3,7 @@
 $theme-primary: #780116; //headlines
 $theme-secondary: #db7c26; //backgrounds
 $theme-tertiary: #f7b538; //backgrounds
-$theme-base: #fff;
+$theme-base: #fffff5;
 $theme-text: #000;
 $font-family: "Roboto", sans-serf;
 $font-weight-bold: 700;
@@ -24,7 +24,7 @@ $font-size-xlg: 30px;
 
 .App-header {
   display: block;
-  background-color: $theme-base;
+  background-color: $theme-tertiary;
   font-weight: $font-weight-bold;
   color: $theme-primary;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
@@ -62,6 +62,45 @@ $font-size-xlg: 30px;
   }
 }
 
+/* Styles for about section - mobile first*/
+
+.App-about {
+  background-color: $theme-secondary;
+  .App-about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 30px;
+    text-align: center;
+    margin: 0 60px;
+
+    .App-about-text {
+      background-color: $theme-base;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin: 0;
+      color: $theme-primary;
+
+      span {
+        font-size: $font-size-sm;
+      }
+    }
+  }
+
+  .App-about-graphic {
+    height: 200px;
+    margin: auto 15px;
+    border-radius: 8px;
+  }
+}
+
+/* Media queries */
+
 @media (min-width: 700px) {
   .App-header {
     display: flex;
@@ -75,6 +114,13 @@ $font-size-xlg: 30px;
     }
     button {
       display: none;
+    }
+  }
+
+  .App-about {
+    .App-about-content {
+      flex-direction: row;
+      padding-top: 15px;
     }
   }
 }

@@ -1,13 +1,23 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import App from './App';
 
-test('renders Navbar component with menu items', () => {
-  render(<App />);
-  const navElement = screen.getByText(/kirsten allen/i);
-  const about = screen.getByText(/about/i);
-  const projects = screen.getByText(/projects/i);
-  const skills = screen.getByText(/skills/i);
-  const contact = screen.getByText(/contact/i);
-  const menuButton = screen.getByRole('button');
-  expect(navElement && about && projects && skills && contact && menuButton).toBeInTheDocument();
+describe('App test suite', () => {
+  beforeEach(() => {
+    render(<App />);
+  });
+  test('renders Navbar component with menu items', () => {
+    const navElement = screen.getByRole('banner');
+    const about = within(navElement).getByText(/about/i);
+    const projects = within(navElement).getByText(/projects/i);
+    const skills = within(navElement).getByText(/skills/i);
+    const contact = within(navElement).getByText(/contact/i);
+    const menuButton = within(navElement).getByRole('button');
+    expect(navElement && about && projects && skills && contact && menuButton).toBeInTheDocument();
+  });
+
+  test('renders About component', () => {
+    const aboutElement = screen.getByTestId('about');
+    const aboutInfographic = screen.getByAltText('Female web developer')
+    expect(aboutElement).toBeInTheDocument();
+  });
 });
