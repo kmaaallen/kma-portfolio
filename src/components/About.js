@@ -1,5 +1,5 @@
 import React from "react";
-import webdev from '../webdev.svg';
+import webdev from '../media/webdev.svg';
 
 export default function About() {
     return (

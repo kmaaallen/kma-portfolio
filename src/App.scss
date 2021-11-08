@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
+//colours
 $theme-primary: #780116; //headlines
 $theme-secondary: #db7c26; //backgrounds
 $theme-tertiary: #f7b538; //backgrounds
 $theme-base: #fffff5;
 $theme-text: #000;
+//typography
 $font-family: "Roboto", sans-serf;
 $font-weight-bold: 700;
 $font-weight-regular: 400;
@@ -12,12 +13,22 @@ $font-size-sm: 15px;
 $font-size-md: 20px;
 $font-size-lg: 25px;
 $font-size-xlg: 30px;
+//shadows
+$shadow-standard: 0 3px 5px rgba(0, 0, 0, 0.1);
+//padding
+$padding-content: 15px;
+//margins
+$margin-horizontal: 0 60px;
+//borders
+$border-radius-standard: 8px;
 
 /* Main styles */
 
 .App {
-  background-color: $theme-base;
+  background-color: $theme-tertiary;
   font-family: $font-family;
+  text-align: center;
+  padding-bottom: $padding-content;
 }
 
 /* Styles for navbar - mobile first*/
@@ -27,19 +38,21 @@ $font-size-xlg: 30px;
   background-color: $theme-tertiary;
   font-weight: $font-weight-bold;
   color: $theme-primary;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-  padding: 15px;
+  //box-shadow: $shadow-standard;
+  padding: $padding-content;
 
   h1 {
     display: inline-flex;
     margin: 0;
     padding-left: 10px;
+    text-decoration: none;
   }
 
   a {
     text-decoration: none;
     font-size: $font-size-md;
     color: $theme-primary;
+    margin: 5px;
     line-height: 35px;
     &:hover {
       text-decoration: underline 2px;
@@ -65,21 +78,19 @@ $font-size-xlg: 30px;
 /* Styles for about section - mobile first*/
 
 .App-about {
-  background-color: $theme-secondary;
+  padding-top: 55px;
   .App-about-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 30px;
-    text-align: center;
-    margin: 0 60px;
+    margin: $margin-horizontal;
 
     .App-about-text {
       background-color: $theme-base;
-      border-radius: 8px;
-      padding: 15px;
-      margin: 15px;
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+      border-radius: $border-radius-standard;
+      padding: $padding-content;
+      margin: 15px 0 15px;
+      box-shadow: $shadow-standard;
     }
 
     h2 {
@@ -90,12 +101,44 @@ $font-size-xlg: 30px;
         font-size: $font-size-sm;
       }
     }
+    .App-about-graphic {
+      height: 200px;
+      margin: auto 15px;
+      border-radius: $border-radius-standard;
+    }
+  }
+}
+
+/* Styles for Skills */
+.App-skills {
+  border-radius: $border-radius-standard;
+  box-shadow: $shadow-standard;
+  background-color: $theme-base;
+  color: $theme-primary;
+  padding-top: $padding-content;
+  margin: $margin-horizontal;
+
+  h2 {
+    margin: 0;
   }
 
-  .App-about-graphic {
-    height: 200px;
-    margin: auto 15px;
-    border-radius: 8px;
+  .App-badges {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+    .App-skill-badge {
+      margin: 5px;
+
+      h3 {
+        font-size: $font-size-md;
+        font-weight: $font-weight-bold;
+      }
+
+      .App-badge-icon {
+        font-size: 100px;
+      }
+    }
   }
 }
 
@@ -104,10 +147,13 @@ $font-size-xlg: 30px;
 @media (min-width: 700px) {
   .App-header {
     display: flex;
-    padding-left: 10px;
     justify-content: space-between;
-    & .App-header-links {
-      margin: auto 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+
+    .App-header-links {
+      margin: auto 25px;
       justify-content: space-around;
       color: $theme-text;
       width: 40%;
@@ -120,7 +166,7 @@ $font-size-xlg: 30px;
   .App-about {
     .App-about-content {
       flex-direction: row;
-      padding-top: 15px;
+      padding-top: $padding-content;
     }
   }
 }

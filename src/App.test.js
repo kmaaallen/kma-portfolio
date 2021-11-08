@@ -18,6 +18,15 @@ describe('App test suite', () => {
   test('renders About component', () => {
     const aboutElement = screen.getByTestId('about');
     const aboutInfographic = screen.getByAltText('Female web developer')
-    expect(aboutElement).toBeInTheDocument();
+    expect(aboutElement && aboutInfographic).toBeInTheDocument();
   });
+
+  test('renders Skills component', () => {
+    const skillsElement = screen.getByTestId('skills');
+    const html = within(skillsElement).getByText(/html/i);
+    const css = within(skillsElement).getByText(/css/i);
+    const javascript = within(skillsElement).getByText(/javascript/i);
+    const react = within(skillsElement).getByText(/react/i);
+    expect(skillsElement && html && css && javascript && react).toBeInTheDocument();
+  })
 });
