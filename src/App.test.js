@@ -1,5 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 import App from './App';
+import { projectData } from './data/projectData';
 
 describe('App test suite', () => {
   beforeEach(() => {
@@ -28,5 +29,12 @@ describe('App test suite', () => {
     const javascript = within(skillsElement).getByText(/javascript/i);
     const react = within(skillsElement).getByText(/react/i);
     expect(skillsElement && html && css && javascript && react).toBeInTheDocument();
+  })
+
+  test('renders Projects component', () => {
+    const projectsElement = screen.getByTestId('projects');
+    const projectBadges = screen.getByTestId('project-badges');
+    expect(projectsElement && projectBadges).toBeInTheDocument();
+    expect(projectBadges.children.length).toBe(projectData.length);
   })
 });

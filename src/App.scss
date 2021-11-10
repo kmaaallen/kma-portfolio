@@ -22,6 +22,81 @@ $margin-horizontal: 0 60px;
 //borders
 $border-radius-standard: 8px;
 
+/* util classes */
+
+.App-rounded-card {
+  background-color: $theme-base;
+  padding: $padding-content;
+  margin: 5px;
+  border-radius: $border-radius-standard;
+  box-shadow: $shadow-standard;
+}
+
+.App-section-heading {
+  color: $theme-primary;
+  margin: 10px;
+  span {
+    font-size: $font-size-sm;
+  }
+}
+
+.App-section-container {
+  margin: $margin-horizontal;
+  padding: $padding-content;
+}
+
+.App-section-flex-display {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+/* Projects  */
+.App-projects {
+  .App-project-badge {
+    width: 300px;
+  }
+
+  .fa-github-square,
+  .fa-external-link-alt {
+    margin: 0 5px;
+  }
+
+  .App-project-graphic,
+  .App-flip-card {
+    height: 200px;
+    width: auto;
+  }
+
+  .App-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .App-flip-card:hover .App-flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* Position the front and back side */
+  .App-flip-front,
+  .App-flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    color: $theme-text;
+    background-color: $theme-secondary;
+  }
+
+  .App-flip-back {
+    transform: rotateY(180deg);
+  }
+}
+
 /* Main styles */
 
 .App {
@@ -29,6 +104,15 @@ $border-radius-standard: 8px;
   font-family: $font-family;
   text-align: center;
   padding-bottom: $padding-content;
+
+  a {
+    color: $theme-primary;
+    margin: 5px;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline 2px;
+    }
+  }
 }
 
 /* Styles for navbar - mobile first*/
@@ -38,7 +122,6 @@ $border-radius-standard: 8px;
   background-color: $theme-tertiary;
   font-weight: $font-weight-bold;
   color: $theme-primary;
-  //box-shadow: $shadow-standard;
   padding: $padding-content;
 
   h1 {
@@ -49,14 +132,8 @@ $border-radius-standard: 8px;
   }
 
   a {
-    text-decoration: none;
-    font-size: $font-size-md;
-    color: $theme-primary;
-    margin: 5px;
     line-height: 35px;
-    &:hover {
-      text-decoration: underline 2px;
-    }
+    font-size: $font-size-md;
   }
 
   & .App-header-links {
@@ -78,7 +155,7 @@ $border-radius-standard: 8px;
 /* Styles for about section - mobile first*/
 
 .App-about {
-  padding-top: 55px;
+  padding-top: 25px;
   .App-about-content {
     display: flex;
     flex-direction: column;
@@ -86,21 +163,9 @@ $border-radius-standard: 8px;
     margin: $margin-horizontal;
 
     .App-about-text {
-      background-color: $theme-base;
-      border-radius: $border-radius-standard;
-      padding: $padding-content;
-      margin: 15px 0 15px;
-      box-shadow: $shadow-standard;
+      margin: 0 15px;
     }
 
-    h2 {
-      margin: 0;
-      color: $theme-primary;
-
-      span {
-        font-size: $font-size-sm;
-      }
-    }
     .App-about-graphic {
       height: 200px;
       margin: auto 15px;
@@ -111,33 +176,16 @@ $border-radius-standard: 8px;
 
 /* Styles for Skills */
 .App-skills {
-  border-radius: $border-radius-standard;
-  box-shadow: $shadow-standard;
-  background-color: $theme-base;
-  color: $theme-primary;
-  padding-top: $padding-content;
-  margin: $margin-horizontal;
+  .App-skill-badge {
+    margin: 5px;
 
-  h2 {
-    margin: 0;
-  }
+    h3 {
+      font-size: $font-size-md;
+      font-weight: $font-weight-bold;
+    }
 
-  .App-badges {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-
-    .App-skill-badge {
-      margin: 5px;
-
-      h3 {
-        font-size: $font-size-md;
-        font-weight: $font-weight-bold;
-      }
-
-      .App-badge-icon {
-        font-size: 100px;
-      }
+    .App-badge-icon {
+      font-size: 100px;
     }
   }
 }
@@ -164,6 +212,7 @@ $border-radius-standard: 8px;
   }
 
   .App-about {
+    padding-top: 70px;
     .App-about-content {
       flex-direction: row;
       padding-top: $padding-content;
