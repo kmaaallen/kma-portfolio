@@ -36,6 +36,9 @@ describe('App test suite', () => {
         expect(await component.findAllByText(/this field is required/i)).toHaveLength(3);
     });
     it('should disable send button on valid submission', async () => {
+        process.env.REACT_APP_EMAIL_JS_SERVICE_ID = 'test';
+        process.env.REACT_APP_EMAIL_JS_TEMPLATE = 'test';
+        process.env.REACT_APP_EMAIL_JS_USER_ID = 'test';
         fireEvent.input(nameInput, { target: { value: 'John Doe' } });
         fireEvent.input(emailInput, { target: { value: 'j.doe@email.com' } });
         fireEvent.input(messageInput, { target: { value: 'Hi there, here is a message' } });
