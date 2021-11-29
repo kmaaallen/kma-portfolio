@@ -6,7 +6,7 @@ describe('App test suite', () => {
   beforeEach(() => {
     render(<App />);
   });
-  test('renders Navbar component with menu items', () => {
+  it('renders Navbar component with menu items', () => {
     const navElement = screen.getByRole('banner');
     const about = within(navElement).getByText(/about/i);
     const projects = within(navElement).getByText(/projects/i);
@@ -16,25 +16,30 @@ describe('App test suite', () => {
     expect(navElement && about && projects && skills && contact && menuButton).toBeInTheDocument();
   });
 
-  test('renders About component', () => {
+  it('renders About component', () => {
     const aboutElement = screen.getByTestId('about');
     const aboutInfographic = screen.getByAltText('Female web developer')
     expect(aboutElement && aboutInfographic).toBeInTheDocument();
   });
 
-  test('renders Skills component', () => {
+  it('renders Skills component', () => {
     const skillsElement = screen.getByTestId('skills');
     const html = within(skillsElement).getByText(/html/i);
     const css = within(skillsElement).getByText(/css/i);
     const javascript = within(skillsElement).getByText(/javascript/i);
     const react = within(skillsElement).getByText(/react/i);
     expect(skillsElement && html && css && javascript && react).toBeInTheDocument();
-  })
+  });
 
-  test('renders Projects component', () => {
+  it('renders Projects component', () => {
     const projectsElement = screen.getByTestId('projects');
     const projectBadges = screen.getByTestId('project-badges');
     expect(projectsElement && projectBadges).toBeInTheDocument();
     expect(projectBadges.children.length).toBe(projectData.length);
-  })
+  });
+
+  it('renders Contact component', () => {
+    const contactElement = screen.getByTestId('contact');
+    expect(contactElement).toBeInTheDocument();
+  });
 });

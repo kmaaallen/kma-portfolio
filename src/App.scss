@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 //colours
 $theme-primary: #780116; //headlines
-$theme-secondary: #db7c26; //backgrounds
+$theme-secondary: #db7c26; //backgrounds / buttons
+$theme-secondary-dark: #db6e26;
 $theme-tertiary: #f7b538; //backgrounds
 $theme-base: #fffff5;
 $theme-text: #000;
@@ -41,7 +42,6 @@ $border-radius-standard: 8px;
 }
 
 .App-section-container {
-  margin: $margin-horizontal;
   padding: $padding-content;
 }
 
@@ -51,49 +51,51 @@ $border-radius-standard: 8px;
   justify-content: space-around;
 }
 
-/* Projects  */
-.App-projects {
-  .App-project-badge {
-    width: 300px;
-  }
+.App-error-message {
+  color: $theme-primary;
+  font-size: $font-size-sm;
+  margin: 5px;
+}
 
-  .fa-github-square,
-  .fa-external-link-alt {
-    margin: 0 5px;
-  }
+/* Modal */
 
-  .App-project-graphic,
-  .App-flip-card {
-    height: 200px;
-    width: auto;
-  }
+.App-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 100px;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
 
-  .App-flip-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
+  & .App-modal-content {
+    margin: 100px auto;
+    box-shadow: none;
+    max-width: 350px;
 
-  .App-flip-card:hover .App-flip-inner {
-    transform: rotateY(180deg);
-  }
+    & .App-modal-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
 
-  /* Position the front and back side */
-  .App-flip-front,
-  .App-flip-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    color: $theme-text;
-    background-color: $theme-secondary;
-  }
+      & h3 {
+        margin: 0;
+      }
 
-  .App-flip-back {
-    transform: rotateY(180deg);
+      & button {
+        background-color: $theme-base;
+        border: none;
+        font-size: $font-size-md;
+        cursor: pointer;
+      }
+    }
+
+    & .App-modal-body {
+      padding-top: 30px;
+      min-height: 150px;
+    }
   }
 }
 
@@ -160,11 +162,6 @@ $border-radius-standard: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: $margin-horizontal;
-
-    .App-about-text {
-      margin: 0 15px;
-    }
 
     .App-about-graphic {
       height: 200px;
@@ -190,14 +187,110 @@ $border-radius-standard: 8px;
   }
 }
 
+/* Projects  */
+.App-projects {
+  .App-project-badge {
+    width: 300px;
+  }
+
+  .fa-github-square,
+  .fa-external-link-alt {
+    margin: 0 5px;
+  }
+
+  .App-project-graphic,
+  .App-flip-card {
+    height: 200px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .App-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .App-flip-card:hover .App-flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* Position the front and back side */
+  .App-flip-front,
+  .App-flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    color: $theme-text;
+    background-color: $theme-secondary;
+  }
+
+  .App-flip-back {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Form */
+.App-form {
+  font-size: $font-size-md;
+
+  & label {
+    margin-left: 5px;
+    float: left;
+  }
+
+  .App-form-input {
+    display: inline-flex;
+    flex-flow: column;
+    width: 100%;
+    text-align: right;
+    & input,
+    & textArea {
+      margin: 5px;
+      padding: 15px;
+      border: 2px solid $theme-secondary;
+      border-radius: $border-radius-standard;
+      font-family: $font-family;
+    }
+
+    :focus-visible {
+      outline: $theme-primary auto 1px;
+    }
+  }
+
+  .App-form-submit {
+    margin: 5px auto;
+    width: 50%;
+    height: 50px;
+    font-size: $font-size-md;
+    cursor: pointer;
+    background-color: $theme-secondary;
+    border-radius: $border-radius-standard;
+    border: none;
+
+    &:hover {
+      background-color: $theme-secondary-dark;
+    }
+  }
+}
+
 /* Media queries */
 
 @media (min-width: 700px) {
+  .App-section-container {
+    margin: $margin-horizontal;
+  }
+
   .App-header {
     display: flex;
     justify-content: space-between;
     position: fixed;
     width: 100%;
+    z-index: 100;
     top: 0;
 
     .App-header-links {
